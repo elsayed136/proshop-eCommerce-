@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import HomePage from './pages/HomePage'
 import NotFound from './components/NotFound'
+import ProductPage from './pages/ProductPage'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <main className="py-3">
         <Container>
           <Switch>
+            <Route path="/product/:id" component={ProductPage} />
             <Route path="/not-found" component={NotFound} />
             <Route path="/" exact component={HomePage} />
             <Redirect to="/not-found" />
