@@ -1,9 +1,10 @@
 import React from 'react'
+import useFetch from '../effects/useFetch'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
-import products from '../products'
 
 const HomePage = () => {
+  const products = useFetch('/api/products') || []
   return (
     <>
       <h1>Latest Products</h1>

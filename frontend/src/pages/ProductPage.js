@@ -1,11 +1,11 @@
 import React from 'react'
+import useFetch from '../effects/useFetch'
 import { Link } from 'react-router-dom'
 import { Col, Row, Button, Card, Image, ListGroup } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
 
 const ProductPage = ({ match }) => {
-  const product = products.find(product => product._id === match.params.id)
+  const product = useFetch(`/api/product/${match.params.id}`) || {}
   return (
     <>
       <Link to="/" className="btn btn-dark my-3">
