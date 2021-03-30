@@ -8,14 +8,16 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elsayed136/proshop-eCommerce-.git"
   },
   "author": "Elsayed",
-  "license": "",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/elsayed136/proshop-eCommerce-/issues"
   },
