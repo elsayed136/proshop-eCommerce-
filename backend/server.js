@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import { errorHandler, notFound } from './middlewares/errorMiddlewares.js'
@@ -11,6 +12,8 @@ dotenv.config()
 connectDB()
 
 const app = express()
+
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('API is running')
