@@ -1,28 +1,28 @@
 import ProductActionTypes from './product.types'
 
 const INITIAL_STATE = {
-  products: [],
-  isFetching: false,
+  productList: [],
+  loading: false,
   errorMessage: undefined,
 }
 
 const productReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case ProductActionTypes.FETCH_PRODUCTS_REQUEST:
+    case ProductActionTypes.PRODUCT_LIST_REQUEST:
       return {
         ...state,
-        isFetching: true,
+        loading: true,
       }
-    case ProductActionTypes.FETCH_PRODUCTS_SUCCESS:
+    case ProductActionTypes.PRODUCT_LIST_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        products: payload,
+        loading: false,
+        productList: payload,
       }
-    case ProductActionTypes.FETCH_PRODUCTS_FAILURE:
+    case ProductActionTypes.PRODUCT_LIST_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        loading: false,
         errorMessage: payload,
       }
     default:

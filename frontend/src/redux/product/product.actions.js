@@ -2,14 +2,14 @@ import ProductActionTypes from './product.types'
 import axios from 'axios'
 
 const fetchProductsRequest = () => ({
-  type: ProductActionTypes.FETCH_PRODUCTS_REQUEST,
+  type: ProductActionTypes.PRODUCT_LIST_REQUEST,
 })
 const fetchProductsSuccess = data => ({
-  type: ProductActionTypes.FETCH_PRODUCTS_SUCCESS,
+  type: ProductActionTypes.PRODUCT_LIST_SUCCESS,
   payload: data,
 })
 const fetchProductsFailure = error => ({
-  type: ProductActionTypes.FETCH_PRODUCTS_FAILURE,
+  type: ProductActionTypes.PRODUCT_LIST_FAILURE,
   payload:
     error.response && error.response.data.message
       ? error.response.data.message

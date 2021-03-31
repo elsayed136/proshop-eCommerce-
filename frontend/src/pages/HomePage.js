@@ -5,24 +5,25 @@ import Product from '../components/Product'
 
 import { fetchProductsAsync } from '../redux/product/product.actions'
 import Message from '../components/Message'
+import Loader from '../components/Loader'
 
 const HomePage = () => {
   const dispatch = useDispatch()
   const product = useSelector(state => state.product)
-  const { isFetching, errorMessage, products } = product
+  const { loading, errorMessage, productList } = product
   useEffect(() => {
     dispatch(fetchProductsAsync())
   }, [dispatch])
   return (
     <>
       <h1>Latest Products</h1>
-      {isFetching ? (
-        <h1>Loading...</h1>
+      {loading ? (
+        <Loader />
       ) : errorMessage ? (
         <Message variant="danger">{errorMessage}</Message>
       ) : (
         <Row>
-          {products.map(product => (
+          {productList.map(product => (
             <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
               <Product product={product} />
             </Col>
