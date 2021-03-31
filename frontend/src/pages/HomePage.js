@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
 
-import { fetchProductsAsync } from '../redux/product/product.actions'
+import { fetchProductListAsync } from '../redux/product/product.actions'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
@@ -14,8 +14,12 @@ const HomePage = () => {
   const productList = useSelector(state => state.productList)
   const { loading, errorMessage, products } = productList
   useEffect(() => {
-    // dispatch(fetchProductsAsync())
+
+
     dispatch(loadProducts())
+
+    
+
   }, [dispatch])
 
   if (loading) return <Loader />
@@ -30,19 +34,6 @@ const HomePage = () => {
           </Col>
         ))}
       </Row>
-      {/* {loading ? (
-        <Loader />
-      ) : errorMessage ? (
-        <Message variant="danger">{errorMessage}</Message>
-      ) : (
-        <Row>
-          {products.map(product => (
-            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product product={product} />
-            </Col>
-          ))}
-        </Row>
-      )} */}
     </>
   )
 }
