@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
 
-import { fetchProductsAsync } from '../redux/product/product.actions'
+import { fetchProductListAsync } from '../redux/product/product.actions'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
@@ -12,7 +12,7 @@ const HomePage = () => {
   const product = useSelector(state => state.product)
   const { loading, errorMessage, productList } = product
   useEffect(() => {
-    dispatch(fetchProductsAsync())
+    dispatch(fetchProductListAsync())
   }, [dispatch])
   return (
     <>

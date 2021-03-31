@@ -2,6 +2,7 @@ import ProductActionTypes from './product.types'
 
 const INITIAL_STATE = {
   productList: [],
+  productDetails: {},
   loading: false,
   errorMessage: undefined,
 }
@@ -20,6 +21,23 @@ const productReducer = (state = INITIAL_STATE, { type, payload }) => {
         productList: payload,
       }
     case ProductActionTypes.PRODUCT_LIST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errorMessage: payload,
+      }
+    case ProductActionTypes.PRODUCT_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      }
+    case ProductActionTypes.PRODUCT_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        productDetails: payload,
+      }
+    case ProductActionTypes.PRODUCT_DETAILS_FAILURE:
       return {
         ...state,
         loading: false,
