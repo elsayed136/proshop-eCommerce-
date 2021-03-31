@@ -4,6 +4,7 @@ import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
 
 import { fetchProductsAsync } from '../redux/product/product.actions'
+import Message from '../components/Message'
 
 const HomePage = () => {
   const dispatch = useDispatch()
@@ -11,14 +12,14 @@ const HomePage = () => {
   const { isFetching, errorMessage, products } = product
   useEffect(() => {
     dispatch(fetchProductsAsync())
-  }, [])
+  }, [dispatch])
   return (
     <>
       <h1>Latest Products</h1>
       {isFetching ? (
         <h1>Loading...</h1>
       ) : errorMessage ? (
-        <h1>{errorMessage}</h1>
+        <Message variant="danger">{errorMessage}</Message>
       ) : (
         <Row>
           {products.map(product => (
