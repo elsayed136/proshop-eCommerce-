@@ -7,29 +7,42 @@ import { fetchProductsAsync } from '../redux/product/product.actions'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
+import { loadProducts } from '../store/product/product.actions'
+
 const HomePage = () => {
   const dispatch = useDispatch()
-  const product = useSelector(state => state.product)
-  const { loading, errorMessage, productList } = product
+  const productList = useSelector(state => state.productList)
+  const { loading, errorMessage, products } = productList
   useEffect(() => {
-    dispatch(fetchProductsAsync())
+    // dispatch(fetchProductsAsync())
+    dispatch(loadProducts())
   }, [dispatch])
+
+  if (loading) return <Loader />
+  if (errorMessage) return <Message variant="danger">{errorMessage}</Message>
   return (
     <>
       <h1>Latest Products</h1>
-      {loading ? (
+      <Row>
+        {products.map(product => (
+          <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+            <Product product={product} />
+          </Col>
+        ))}
+      </Row>
+      {/* {loading ? (
         <Loader />
       ) : errorMessage ? (
         <Message variant="danger">{errorMessage}</Message>
       ) : (
         <Row>
-          {productList.map(product => (
+          {products.map(product => (
             <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
               <Product product={product} />
             </Col>
           ))}
         </Row>
-      )}
+      )} */}
     </>
   )
 }
