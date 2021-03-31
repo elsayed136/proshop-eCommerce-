@@ -14,12 +14,7 @@ const HomePage = () => {
   const productList = useSelector(state => state.productList)
   const { loading, errorMessage, products } = productList
   useEffect(() => {
-
-
     dispatch(loadProducts())
-
-    
-
   }, [dispatch])
 
   if (loading) return <Loader />

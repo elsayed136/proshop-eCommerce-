@@ -12,3 +12,12 @@ export const loadProducts = () => dispatch =>
       onError: ProductActionTypes.PRODUCT_LIST_FAILURE,
     })
   )
+export const getProductById = id => dispatch =>
+  dispatch(
+    apiCallBegan({
+      url: `${url}/${id}`,
+      onStart: ProductActionTypes.PRODUCT_DETAILS_REQUEST,
+      onSuccess: ProductActionTypes.PRODUCT_DETAILS_RECEIVED,
+      onError: ProductActionTypes.PRODUCT_DETAILS_FAILURE,
+    })
+  )
