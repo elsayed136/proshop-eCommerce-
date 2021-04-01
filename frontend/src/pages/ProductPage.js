@@ -10,8 +10,9 @@ import { getProductById } from '../store/product/product.actions'
 
 const ProductPage = ({ match }) => {
   const dispatch = useDispatch()
-  const productDetails = useSelector(state => state.productDetails)
-  const { loading, errorMessage, product } = productDetails
+  const { loading, errorMessage, product } = useSelector(
+    state => state.productDetails
+  )
   useEffect(() => {
     dispatch(getProductById(match.params.id))
   }, [dispatch, match])

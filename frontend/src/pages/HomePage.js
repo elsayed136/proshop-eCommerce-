@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
+import { createStructuredSelector } from 'reselect'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
-import Product from '../components/Product'
 
-import { fetchProductListAsync } from '../redux/product/product.actions'
+import Product from '../components/Product'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 
@@ -11,8 +12,9 @@ import { loadProducts } from '../store/product/product.actions'
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  const productList = useSelector(state => state.productList)
-  const { loading, errorMessage, products } = productList
+  const { loading, errorMessage, products } = useSelector(
+    state => state.productList
+  )
   useEffect(() => {
     dispatch(loadProducts())
   }, [dispatch])
