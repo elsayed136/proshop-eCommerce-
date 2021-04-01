@@ -7,6 +7,7 @@ import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { getProductById } from '../store/product/product.actions'
+import { addItem } from '../store/cart/cart.actions'
 
 const ProductPage = ({ match }) => {
   const dispatch = useDispatch()
@@ -72,6 +73,7 @@ const ProductPage = ({ match }) => {
                   className="btn-block"
                   type="button"
                   disabled={product.countInStock === 0}
+                  onClick={() => dispatch(addItem(product))}
                 >
                   Add To Cart
                 </Button>
