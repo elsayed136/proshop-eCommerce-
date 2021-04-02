@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { createStructuredSelector } from 'reselect'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'

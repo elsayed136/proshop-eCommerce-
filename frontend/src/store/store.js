@@ -15,7 +15,7 @@ const persistConfig = {
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-const middlewares = [thunk, quantityChecker, api]
+const middlewares = [thunk, api, quantityChecker]
 
 const store = createStore(
   persistedReducer,

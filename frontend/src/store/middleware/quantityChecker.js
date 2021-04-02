@@ -9,11 +9,14 @@ const quantityChecker = ({ dispatch, getState }) => next => action => {
   const existing = cartItems.find(
     cartItem => cartItem._id === action.payload._id
   )
-
+  if (existing === undefined) return next(action)
   if (existing.quantity >= existing.countInStock) {
     return toast(errorMessage)
   }
-
+  // dispatch({
+  //   type: CartActionTypes.CART_ADD_ITEM,
+  //   payload: existing,
+  // })
   next(action)
 }
 
