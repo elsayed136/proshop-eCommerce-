@@ -42,7 +42,7 @@ const CartPage = () => {
             {cartItems.map(item => (
               <ListGroup.Item key={item._id}>
                 <Row className="align-items-center text-center">
-                  <Col md={2}>
+                  <Col md={3}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
@@ -50,8 +50,8 @@ const CartPage = () => {
                       {item.name}
                     </Link>
                   </Col>
-                  <Col md={3}>
-                    <h3>${item.price}</h3>
+                  <Col md={2}>
+                    <h5>${item.price}</h5>
                   </Col>
                   <Col
                     md={3}
@@ -71,9 +71,9 @@ const CartPage = () => {
                       <FontAwesomeIcon icon={faPlus} />
                     </Button>
                   </Col>
-                  <Col md={1}>
+                  <Col md={1} className="p-0">
                     <Button
-                      className="btn-block px-0 py-2"
+                      className="btn-block "
                       variant="light"
                       onClick={() => dispatch(clearItemFromCart(item))}
                     >
