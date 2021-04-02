@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 
 import reducer from './reducer'
 import thunk from 'redux-thunk'
+import quantityChecker from './middleware/quantityChecker'
 import api from './middleware/api'
 
 const persistConfig = {
@@ -14,7 +15,7 @@ const persistConfig = {
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-const middlewares = [thunk, api]
+const middlewares = [thunk, quantityChecker, api]
 
 const store = createStore(
   persistedReducer,

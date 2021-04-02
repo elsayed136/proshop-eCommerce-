@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Message from '../components/Message'
 
+// ReactToastify
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import {
   addItem,
   removeItem,
@@ -26,8 +30,9 @@ const CartPage = () => {
   }
   return (
     <Row>
-      <Col sm={12} md={12} lg={8} className="my-3">
+      <Col md={12} lg={8} className="my-3">
         <h1>Shopping Cart</h1>
+
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to="/">Go Back</Link>
@@ -41,7 +46,9 @@ const CartPage = () => {
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
-                    <Link to={`/product/${item._id}`}>{item.name}</Link>
+                    <Link to={`/product/${item._id}`} className="text-clamp">
+                      {item.name}
+                    </Link>
                   </Col>
                   <Col md={3}>
                     <h3>${item.price}</h3>
@@ -57,13 +64,16 @@ const CartPage = () => {
                       <FontAwesomeIcon icon={faMinus} />
                     </Button>
                     <h2 className="mx-2">{item.quantity}</h2>
-                    <Button size="sm" onClick={() => dispatch(addItem(item))}>
+                    <Button
+                      size="sm"
+                      onClick={() => dispatch(addItem(item._id))}
+                    >
                       <FontAwesomeIcon icon={faPlus} />
                     </Button>
                   </Col>
                   <Col md={1}>
                     <Button
-                      className="btn-block py-2"
+                      className="btn-block px-0 py-2"
                       variant="light"
                       onClick={() => dispatch(clearItemFromCart(item))}
                     >
@@ -95,6 +105,7 @@ const CartPage = () => {
           </ListGroup>
         </Card>
       </Col>
+      <ToastContainer autoClose={2000} />
     </Row>
   )
 }

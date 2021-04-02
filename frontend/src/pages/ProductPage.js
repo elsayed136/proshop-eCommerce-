@@ -73,7 +73,7 @@ const ProductPage = ({ match }) => {
                   className="btn-block"
                   type="button"
                   disabled={product.countInStock === 0}
-                  onClick={() => dispatch(addItem(product))}
+                  onClick={() => dispatch(addItem(product._id))}
                 >
                   Add To Cart
                 </Button>

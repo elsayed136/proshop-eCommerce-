@@ -15,7 +15,11 @@ const Product = ({
       </Link>
       <Card.Body>
         <Link to={`/product/${_id}`}>
-          <Card.Title as="div">
+          <Card.Title
+            as="div"
+            className="text-clamp"
+            style={{ height: '2.55rem' }}
+          >
             <strong>{name}</strong>
           </Card.Title>
         </Link>
