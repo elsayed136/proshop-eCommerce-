@@ -15,11 +15,6 @@ export const requireAuth = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorized, token doesn't start with Bearer")
   }
 
-  if (!token) {
-    res.status(401)
-    throw new Error('Not authorized, no token')
-  }
-
   try {
     token = req.headers.authorization.split(' ')[1]
 
