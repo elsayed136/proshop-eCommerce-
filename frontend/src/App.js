@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
+import LoginPage from './pages/LoginPage'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <main className="py-3">
         <Container>
           <Switch>
+            <Route path="/login" component={LoginPage} />
             <Route path="/cart" component={CartPage} />
             <Route path="/product/:id" component={ProductPage} />
             <Route path="/not-found" component={NotFound} />

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 
 import Product from '../components/Product'
-import Message from '../components/Message'
-import Loader from '../components/Loader'
+import Message from '../components/common/Message'
+import Loader from '../components/common/Loader'
 
 import { loadProducts } from '../store/product/product.actions'
 

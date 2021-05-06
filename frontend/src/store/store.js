@@ -11,7 +11,7 @@ import api from './middleware/api'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart'],
+  whitelist: ['cart', 'user'],
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
 
